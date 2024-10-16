@@ -30,6 +30,10 @@ public class ItemService {
     }
 
     public void deleteItem(Long id) {
+        if(!itemRepository.existsById(id)) {
+            throw new RuntimeException("Item not found");
+        }
+
         itemRepository.deleteById(id);
     }
 }
